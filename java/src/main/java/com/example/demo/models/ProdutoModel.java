@@ -25,6 +25,7 @@ public class ProdutoModel implements Produtos {
     @Autowired
     private NativeScriptService nativeScriptService;
 
+
     public Object getAllProducts() throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -47,6 +48,9 @@ public class ProdutoModel implements Produtos {
                 map.put("id", rs.getObject("id"));
                 map.put("nome", rs.getObject("nome"));
                 map.put("preco", rs.getObject("preco"));
+                map.put("quantidades", rs.getObject("quantidades"));
+                map.put("defeitos", rs.getObject("defeitos"));
+
                 listMap.add(map);
             }
             return listMap;
