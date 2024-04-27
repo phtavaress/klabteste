@@ -1,0 +1,26 @@
+$cor-fundo-header: #f2f2f2;
+$cor-fundo-linha-par: #f9f9f9;
+$cor-borda: #ddd;
+
+
+.table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  th, td {
+    padding: 8px;
+    border: 1px solid $cor-borda;
+  }
+
+  th {
+    background-color: $cor-fundo-header;
+    text-align: left;
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: $cor-fundo-linha-par;
+    }
+  }
+}
