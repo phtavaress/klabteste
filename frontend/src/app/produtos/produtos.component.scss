@@ -24,3 +24,28 @@ $cor-borda: #ddd;
     }
   }
 }
+
+.filtros-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .filtro {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s ease;
+      width: 120px;
+    }
+  }
+}
