@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produtos")
@@ -30,5 +31,20 @@ public class ProdutosWs {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Deu erro");
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getById(@PathVariable("id") int id) {
+        try {
+            Object produto = produtos.getById(id);
+            if(produto != null) {
+                return ResponseEntity.ok().body(produto);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao obter informações do produto.");
+        }
+
     }
 }

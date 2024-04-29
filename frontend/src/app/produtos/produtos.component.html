@@ -22,14 +22,6 @@
   </div>
 </div>
 
-<!-- <div *ngIf="produtosFiltrados.length > 0">
-  <h3>Produtos Filtrados:</h3>
-  <ul>
-    <li *ngFor="let produto of produtosFiltrados">
-      {{ produto.nome }} - Preço: {{ produto.preco }} - Quantidade: {{ produto.quantidade }}
-    </li>
-  </ul>
-</div> -->
 
   <table class="table">
     <thead>
@@ -43,20 +35,13 @@
     </thead>
     <tbody>
 
-        <tr *ngFor="let produto of produtosFiltrados">
+        <tr *ngFor="let produto of produtosFiltrados" (click)="getDetalhe(produto.id)">
           <td>{{ produto.nome }}</td>
           <td>{{ produto.quantidades }}</td>
           <td>{{ produto.defeitos }}</td>
           <td>{{ produto.quantidades - produto.defeitos }}</td>
           <td>{{ produto.preco }}</td>
         </tr>
-      <!-- <tr *ngFor="let produto of produtos">
-        <td>{{ produto.nome }}</td>
-        <td>{{ produto.quantidades }}</td>
-        <td>{{ produto.defeitos }}</td>
-        <td>{{ produto.quantidades - produto.defeitos }}</td>
-        <td>{{ produto.preco }}</td>
-      </tr> -->
     </tbody>
   </table>
 

@@ -19,8 +19,15 @@ $cor-borda: #ddd;
   }
 
   tbody {
-    tr:nth-child(even) {
-      background-color: $cor-fundo-linha-par;
+    tr {
+      &:nth-child(even) {
+        background-color: $cor-fundo-linha-par; /* Cor de fundo para linhas pares e ímpares */
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1); /* Cor de fundo ao passar o mouse */
+        cursor: pointer; /* Altera o cursor para indicar interação */
+      }
     }
   }
 }

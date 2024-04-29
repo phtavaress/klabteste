@@ -16,4 +16,8 @@ export class ProdutosService {
     return this.httpClient.get<Object[]>(this.API);
   }
 
+  getById(id: number):Observable<Object> {
+    return this.httpClient.get<Object>(`${this.API}/${id}`);
+  }
+
 }

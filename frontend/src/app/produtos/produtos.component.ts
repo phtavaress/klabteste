@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProdutosService } from "../services/produtos.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-produtos',
@@ -15,7 +16,7 @@ export class ProdutosComponent implements OnInit {
   quantidadeMinima: number;
   nome: string = '';
 
-  constructor(private produtosService: ProdutosService) { }
+  constructor(private produtosService: ProdutosService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -44,4 +45,16 @@ export class ProdutosComponent implements OnInit {
     this.filtrar();
   }
 
+
+  getDetalhe(id: number) {
+    this.produtosService.getById(id).subscribe({
+      next: (response: Object) => {
+        this.router.navigate(['/produtos', id]);
+      },
+      error: (error: any) => {
+        console.error('Erro ao carregar detalhes do produto:', error);
+      }
+    });
+
+  }
 }
