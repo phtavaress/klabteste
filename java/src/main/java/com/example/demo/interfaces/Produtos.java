@@ -11,4 +11,6 @@ public interface Produtos {
     public Object getAllProducts() throws SQLException ;
 
     public Object getById(Integer id) throws SQLException;
+
+    public void updateQuantity(int productId, int quantity) throws SQLException;
 }

@@ -1,7 +1,15 @@
 <h2>Detalhes do Produto</h2>
-<div *ngIf="produto" class="produto-detalhe">
+<div *ngIf="produto" class="produto-detalhe" class="modal-container">
   <p><strong>Nome:</strong> {{ produto.nome }}</p>
   <p><strong>Quantidade:</strong> {{ produto.quantidades }}</p>
   <p><strong>Defeitos:</strong> {{ produto.defeitos }}</p>
   <p><strong>Preço:</strong> {{ produto.preco }}</p>
-</div>
+  <button (click)="abrirModalVenda()">Cadastrar venda</button>
+
+  <app-vendas 
+  *ngIf="mostrarModalVenda" 
+  [produto]="produto" 
+  (fecharModal)="fecharModalVenda()"
+  class="modal"></app-vendas>
+<div *ngIf="mostrarModalVenda" class="overlay"></div>
+</div> 

@@ -120,4 +120,27 @@ public class ProdutoModel implements Produtos {
             throw new SQLException("Erro ao inserir produto no banco de dados.", e.getMessage());
         }
     }
+
+    @Override
+    public void updateQuantity(int productId, int soldQuantity) throws SQLException {
+        try {
+            String sql = "UPDATE produtos SET quantidades = quantidades - ? WHERE id = ?";
+            Connection connection = nativeScriptService.getConectionDb();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, soldQuantity);
+            preparedStatement.setInt(2, productId);
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+
+            System.out.println("Quantidade disponível para venda atualizada com sucesso.");
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar quantidade disponível para venda: " + e.getMessage());
+            throw new SQLException("Erro ao atualizar quantidade disponível para venda no banco de dados.", e.getMessage());
+        }
+    }
+
 }
